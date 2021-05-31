@@ -51,6 +51,7 @@ export default function Messenger() {
       
       try {
       const user=localStorage.getItem("userId")
+      console.log("login user",user)
         const res = await axios.get("http://localhost:3002/api/get-conversation-one/" + user);
         setConversations(res.data.results);
         console.log(res.data.results)
@@ -80,7 +81,7 @@ export default function Messenger() {
     const message = {
       sender: user,
       text: newMessage,
-      conversationId: currentChat._id,
+      conversationId: currentChat,
     };
 
     const receiverId = currentChat.members.find(
